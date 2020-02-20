@@ -46,11 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Src\EventDriven\CommandManager.cs" />
     <Compile Include="Src\EventDriven\InputListener.cs" />
     <Compile Include="Src\EventDriven\KeyboardEventArgs.cs" />
     <Compile Include="Src\Files\Reading.cs" />
     <Compile Include="Src\Files\Xml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Src\FSM\fsm.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

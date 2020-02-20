@@ -19,8 +19,8 @@ namespace GamLib.EventDriven
         public HashSet<Buttons> ButtonsList;
 
         public event EventHandler<KeyboardEventArgs> OnKeyDown = delegate { };
-        public event EventHandler<KeyboardEventArgs> OnKeyPressed = delegate { };
         public event EventHandler<KeyboardEventArgs> OnKeyUp = delegate { };
+
         public event EventHandler<GamePadEventArgs> OnGamePadPressed = delegate { };
 
         public InputListener()
