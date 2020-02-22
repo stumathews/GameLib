@@ -107,29 +107,6 @@ namespace GameLibFramework.Src.FSM
     
     }
 
-    public class IdleState : State
-    {
-        private const double directionChangeTime = 0.5;
-        private double curTime = 0.0;
-
-        public IdleState()
-        {
-            Name = "Idle";
-        }
-        public override void Enter(object owner)
-        {
-           
-        }
-        public override void Exit(object owner)
-        {
-            
-        }
-        public override void Execute(object owner, GameTime gameTime)
-        {
-          
-        }
-    }
-
     public class FleeState : State
     {
         public FleeState()
