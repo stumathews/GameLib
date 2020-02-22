@@ -31,7 +31,7 @@ namespace GameLibFramework.Src.FSM
             Console.WriteLine($"Exiting State {Name}");
         }
 
-        public virtual void Execute(object owner, GameTime gameTime)
+        public virtual void Update(object owner, GameTime gameTime)
         {
             Console.WriteLine($"Entering Execute state of ' {Name}' with deltaTime of {gameTime.ElapsedGameTime}");
         }
@@ -102,7 +102,7 @@ namespace GameLibFramework.Src.FSM
                 }
             }
             // Execute the current state
-            m_CurrentState.Execute(m_Owner, gameTime);
+            m_CurrentState.Update(m_Owner, gameTime);
         }
     
     }

@@ -21,7 +21,6 @@ namespace GamLib.EventDriven
             _inputListener.OnKeyDown += InputListenerOnOnKeyPressed;
             _inputListener.OnGamePadPressed += InputListenerOnOnGamePadPressed;
         }
-
         
 
         public void Update(GameTime gameTime)
@@ -38,6 +37,12 @@ namespace GamLib.EventDriven
         {
             _buttonCommands.Add(buttons, command);
             _inputListener.SupportButton(buttons);
+        }
+
+        public void Clear()
+        {
+            _buttonCommands.Clear();
+            _keyCommands.Clear();
         }
     }
 }
