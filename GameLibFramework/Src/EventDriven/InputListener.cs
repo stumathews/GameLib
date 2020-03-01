@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 
-namespace GamLib.EventDriven
+namespace GameLib.EventDriven
 {
     public class InputListener
     {

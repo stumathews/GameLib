@@ -21,6 +21,10 @@ namespace GameLibFramework.Src.FSM
     
     public abstract class State
     {
+        public State(string name)
+        {
+            Name = name;
+        }
         public virtual void Enter(object owner)
         {
             Console.WriteLine($"Entering State {Name}");
@@ -103,27 +107,6 @@ namespace GameLibFramework.Src.FSM
             }
             // Execute the current state
             m_CurrentState.Update(m_Owner, gameTime);
-        }
-    
-    }
-
-    public class FleeState : State
-    {
-        public FleeState()
-        {
-            Name = "Flee";
-        }
-
-       
-    }
-
-    public class ChaseState : State
-    {
-        public ChaseState()
-        {
-            Name = "Chase";
-        }
-
-        
-    }
+        }    
+    }        
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Src\Animation\Animation.cs" />
     <Compile Include="Src\EventDriven\CommandManager.cs" />
     <Compile Include="Src\EventDriven\InputListener.cs" />
     <Compile Include="Src\EventDriven\KeyboardEventArgs.cs" />

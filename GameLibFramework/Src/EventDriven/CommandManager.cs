@@ -3,46 +3,55 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace GamLib.EventDriven
+namespace GameLib.EventDriven
 {
     public class CommandManager
     {
         private readonly InputListener _inputListener;
+        private readonly Dictionary<Keys,Action<GameTime>> _keyDownCommands = new Dictionary<Keys, Action<GameTime>>();
+        private readonly Dictionary<Keys, Action<GameTime>> _keyUpCommands = new Dictionary<Keys, Action<GameTime>>();
 
-        private readonly Dictionary<Buttons, Action<GameTime>> _buttonCommands = new Dictionary<Buttons, Action<GameTime>>();
-        private readonly Dictionary<Keys,Action<GameTime>> _keyCommands = new Dictionary<Keys, Action<GameTime>>();
+        private void InputListenerOnOnKeyPressed(object sender, KeyboardEventArgs e)
+        {
+            if(_keyDownCommands.ContainsKey(e.Key))
+                _keyDownCommands[e.Key](e.GameTime);
+        }
 
-        private void InputListenerOnOnGamePadPressed(object sender, GamePadEventArgs e) => _buttonCommands[e.Buttons](e.GameTime);
-        private void InputListenerOnOnKeyPressed(object sender, KeyboardEventArgs e) => _keyCommands[e.Key](e.GameTime);
-        
+        private void _inputListener_OnKeyUp(object sender, KeyboardEventArgs e)
+        {
+            if (_keyUpCommands.ContainsKey(e.Key))
+                _keyUpCommands[e.Key](e.GameTime);
+        }
+
         public CommandManager()
         {
             _inputListener = new InputListener();
             _inputListener.OnKeyDown += InputListenerOnOnKeyPressed;
-            _inputListener.OnGamePadPressed += InputListenerOnOnGamePadPressed;
+            _inputListener.OnKeyUp += _inputListener_OnKeyUp;
         }
-        
+
+        public event EventHandler<KeyboardEventArgs> OnKeyUp = delegate { };
 
         public void Update(GameTime gameTime)
         {
             _inputListener.Update(gameTime);
         }
 
-        public void AddCommand(Keys key, Action<GameTime> command)
+        public void AddKeyUpCommand(Keys key, Action<GameTime> command)
         {
-            _keyCommands.Add(key, command);
+            _keyUpCommands.Add(key, command);
             _inputListener.SupportKey(key);
         }
-        public void AddCommand(Buttons buttons, Action<GameTime> command)
+        public void AddKeyDownCommand(Keys key, Action<GameTime> command)
         {
-            _buttonCommands.Add(buttons, command);
-            _inputListener.SupportButton(buttons);
+            _keyDownCommands.Add(key, command);
+            _inputListener.SupportKey(key);
         }
 
         public void Clear()
         {
-            _buttonCommands.Clear();
-            _keyCommands.Clear();
+            _keyDownCommands.Clear();
+            _keyUpCommands.Clear();
         }
     }
 }
