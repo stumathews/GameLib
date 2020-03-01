@@ -21,6 +21,9 @@ namespace GameLib.EventDriven
         {
             if (_keyUpCommands.ContainsKey(e.Key))
                 _keyUpCommands[e.Key](e.GameTime);
+
+            // There is also a generic Key Up delegate mainly for detecting idleness
+            OnKeyUp?.Invoke(sender, e);
         }
 
         public CommandManager()
