@@ -40,6 +40,11 @@ namespace GameLibFramework.Src.FSM
             Console.WriteLine($"Entering Execute state of ' {Name}' with deltaTime of {gameTime.ElapsedGameTime}");
         }
 
+        public virtual void Initialize()
+        {
+
+        }
+
         public string Name
         {
             get;
