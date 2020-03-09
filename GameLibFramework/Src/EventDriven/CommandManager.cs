@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace GameLib.EventDriven
 {
+    /// <summary>
+    /// Input manager
+    /// </summary>
     public class CommandManager
     {
         private readonly InputListener _inputListener;
