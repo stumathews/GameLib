@@ -29,7 +29,14 @@ namespace GameLib.EventDriven
             OnKeyUp?.Invoke(sender, e);
         }
 
-        public CommandManager()
+        public static CommandManager GetInstance()
+        {
+            if (_instance != null) return _instance;
+            return new CommandManager();
+        }
+        private static CommandManager _instance;
+
+        private CommandManager()
         {
             _inputListener = new InputListener();
             _inputListener.OnKeyDown += InputListenerOnOnKeyPressed;
