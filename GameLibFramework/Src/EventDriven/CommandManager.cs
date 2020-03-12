@@ -36,6 +36,12 @@ namespace GameLib.EventDriven
         }
         private static CommandManager _instance;
 
+        private bool on;
+        public void Toggle()
+        {
+            on = !on;
+        }
+
         private CommandManager()
         {
             _inputListener = new InputListener();
@@ -43,7 +49,7 @@ namespace GameLib.EventDriven
             _inputListener.OnKeyUp += _inputListener_OnKeyUp;
         }
 
-        public event EventHandler<KeyboardEventArgs> OnKeyUp = delegate { };
+        public event EventHandler<KeyboardEventArgs> OnKeyUp;
 
         public void Update(GameTime gameTime)
         {
