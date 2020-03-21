@@ -1,47 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace GameLibFramework.FSM
 {
-    public class Transition
-    {
-        public readonly State NextState;
-        public readonly Func<bool> Condition;
-        public Transition(State nextState, Func<bool> condition)
-        {
-            NextState = nextState;
-            Condition = condition;
-        }
-    }
-    
-    public abstract class State
-    {
-        protected State(string name)
-        {
-            Name = name;
-        }
-        public virtual void Enter(object owner) => Console.WriteLine($"Entering State {Name}");
-
-        public virtual void Exit(object owner) => Console.WriteLine($"Exiting State {Name}");
-
-        public virtual void Update(object owner, GameTime gameTime) => Console.WriteLine($"Entering Execute state of ' {Name}' with deltaTime of {gameTime.ElapsedGameTime}");
-
-        public virtual void Initialize() { }
-
-        public string Name
-        {
-            get;
-            set;
-        }
-
-        private readonly List<Transition> _mTransitions = new List<Transition>();
-
-        public List<Transition> Transitions => _mTransitions;
-
-        public void AddTransition(Transition transition) => _mTransitions.Add(transition);
-    }
-    
     public class FSM
     {
         private readonly object _mOwner;

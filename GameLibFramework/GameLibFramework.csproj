@@ -56,6 +56,8 @@
     <Compile Include="Src\Files\Xml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Src\FSM\fsm.cs" />
+    <Compile Include="Src\FSM\State.cs" />
+    <Compile Include="Src\FSM\Transition.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

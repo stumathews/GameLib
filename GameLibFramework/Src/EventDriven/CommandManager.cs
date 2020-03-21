@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameLib.EventDriven;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace GameLib.EventDriven
+namespace GameLibFramework.EventDriven
 {
     /// <summary>
     /// Input manager
@@ -11,12 +12,13 @@ namespace GameLib.EventDriven
     public class CommandManager
     {
         private readonly InputListener _inputListener;
-        private readonly Dictionary<Keys,Action<GameTime>> _keyDownCommands = new Dictionary<Keys, Action<GameTime>>();
+        private readonly Dictionary<Keys, Action<GameTime>> _keyDownCommands = new Dictionary<Keys, Action<GameTime>>();
         private readonly Dictionary<Keys, Action<GameTime>> _keyUpCommands = new Dictionary<Keys, Action<GameTime>>();
+        public event EventHandler<KeyboardEventArgs> OnKeyUp;
 
         private void InputListenerOnOnKeyPressed(object sender, KeyboardEventArgs e)
         {
-            if(_keyDownCommands.ContainsKey(e.Key))
+            if (_keyDownCommands.ContainsKey(e.Key))
                 _keyDownCommands[e.Key](e.GameTime);
         }
 
@@ -29,13 +31,9 @@ namespace GameLib.EventDriven
             OnKeyUp?.Invoke(sender, e);
         }
 
-        public static CommandManager GetInstance()
-        {
-            if (_instance != null) return _instance;
-            return new CommandManager();
-        }
-        private static CommandManager _instance;
-        
+        // this is currently not implementing Singleton pattern but perhaps could
+        public static CommandManager GetNewInstance() => new CommandManager();
+
         private CommandManager()
         {
             _inputListener = new InputListener();
@@ -43,18 +41,14 @@ namespace GameLib.EventDriven
             _inputListener.OnKeyUp += _inputListener_OnKeyUp;
         }
 
-        public event EventHandler<KeyboardEventArgs> OnKeyUp;
-
-        public void Update(GameTime gameTime)
-        {
-            _inputListener.Update(gameTime);
-        }
+        public void Update(GameTime gameTime) => _inputListener.Update(gameTime);
 
         public void AddKeyUpCommand(Keys key, Action<GameTime> command)
         {
             _keyUpCommands.Add(key, command);
             _inputListener.SupportKey(key);
         }
+
         public void AddKeyDownCommand(Keys key, Action<GameTime> command)
         {
             _keyDownCommands.Add(key, command);

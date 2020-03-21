@@ -8,14 +8,20 @@ namespace GameLibFramework.Animation
     /// </summary>
     public class AnimationInfo
     {
-        public AnimationInfo(Texture2D texture, int frameWidth, int frameHeight, int frameCount, Color color, float scale,
-            bool looping, int frameTime)
+        public const int DefaultFrameWidth = 48;
+        public const int DefaultFrameHeight = 64;
+        public const int DefaultFrameTime = 150;
+        public const float DefaultScale = 1;
+        public const int DefaultFrameCount = 3;
+
+        public AnimationInfo(Texture2D texture, int frameWidth = DefaultFrameWidth, int frameHeight = DefaultFrameWidth, int frameCount = DefaultFrameCount, float scale = DefaultScale,
+            bool looping = true, int frameTime = DefaultFrameTime)
         {
             Texture = texture;
             FrameWidth = frameWidth;
             FrameHeight = frameHeight;
             FrameCount = frameCount;
-            Color = color;
+            Color = Color.White;
             Scale = scale;
             Looping = looping;
             FrameTime = frameTime;
