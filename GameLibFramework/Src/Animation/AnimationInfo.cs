@@ -14,7 +14,7 @@ namespace GameLibFramework.Animation
         public const float DefaultScale = 1;
         public const int DefaultFrameCount = 3;
 
-        public AnimationInfo(Texture2D texture, int frameWidth = DefaultFrameWidth, int frameHeight = DefaultFrameWidth, int frameCount = DefaultFrameCount, float scale = DefaultScale,
+        public AnimationInfo(Texture2D texture, string assetFile, int frameWidth = DefaultFrameWidth, int frameHeight = DefaultFrameWidth, int frameCount = DefaultFrameCount, float scale = DefaultScale,
             bool looping = true, int frameTime = DefaultFrameTime)
         {
             Texture = texture;
@@ -25,7 +25,10 @@ namespace GameLibFramework.Animation
             Scale = scale;
             Looping = looping;
             FrameTime = frameTime;
+            AssetFile = assetFile;
         }
+
+        public string AssetFile { get; set; }
 
         public Texture2D Texture { get; }
         public int FrameWidth { get; }
