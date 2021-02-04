@@ -30,11 +30,8 @@ namespace GameLibFramework.EventDriven
             // There is also a generic Key Up delegate mainly for detecting idleness
             OnKeyUp?.Invoke(sender, e);
         }
-
-        // this is currently not implementing Singleton pattern but perhaps could
-        public static CommandManager GetNewInstance() => new CommandManager();
-
-        private CommandManager()
+        
+        public CommandManager()
         {
             _inputListener = new InputListener();
             _inputListener.OnKeyDown += InputListenerOnOnKeyPressed;
