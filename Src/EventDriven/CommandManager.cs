@@ -34,7 +34,7 @@ namespace GameLibFramework.EventDriven
         // this is currently not implementing Singleton pattern but perhaps could
         public static CommandManager GetNewInstance() => new CommandManager();
 
-        private CommandManager()
+        public CommandManager()
         {
             _inputListener = new InputListener();
             _inputListener.OnKeyDown += InputListenerOnOnKeyPressed;
