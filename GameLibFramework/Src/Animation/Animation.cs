@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using GameLibFramework.Drawing;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace GameLibFramework.Animation
@@ -79,7 +80,7 @@ namespace GameLibFramework.Animation
                 (int)(_frameHeight * _scale));
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(ISpriteBatcher spriteBatch)
         {
             if (_active)
                 spriteBatch.Draw(_spriteStrip, _destinationRect, _sourceRect, _color);

@@ -9,7 +9,7 @@ namespace GameLibFramework.EventDriven
     /// <summary>
     /// Input manager
     /// </summary>
-    public class CommandManager
+    public class CommandManager : ICommandManager
     {
         private readonly InputListener _inputListener;
         private readonly Dictionary<Keys, Action<GameTime>> _keyDownCommands = new Dictionary<Keys, Action<GameTime>>();
@@ -30,7 +30,7 @@ namespace GameLibFramework.EventDriven
             // There is also a generic Key Up delegate mainly for detecting idleness
             OnKeyUp?.Invoke(sender, e);
         }
-        
+
         public CommandManager()
         {
             _inputListener = new InputListener();

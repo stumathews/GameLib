@@ -3,7 +3,12 @@ using Microsoft.Xna.Framework;
 
 namespace GameLibFramework.FSM
 {
-    public class FSM
+    public interface IFSM
+    {
+        void Update(GameTime gameTime);
+    }
+
+    public class FSM : IFSM
     {
         private readonly object _mOwner;
         private readonly List<State> _mStates;

@@ -49,7 +49,10 @@
     <Compile Include="Src\Animation\Animation.cs" />
     <Compile Include="Src\Animation\AnimationInfo.cs" />
     <Compile Include="Src\Animation\Direction.cs" />
+    <Compile Include="Src\Drawing\IGameSpriteFont.cs" />
+    <Compile Include="Src\Drawing\ISpriteBatcher.cs" />
     <Compile Include="Src\EventDriven\CommandManager.cs" />
+    <Compile Include="Src\EventDriven\ICommandManager.cs" />
     <Compile Include="Src\EventDriven\InputListener.cs" />
     <Compile Include="Src\EventDriven\KeyboardEventArgs.cs" />
     <Compile Include="Src\Files\Reading.cs" />
