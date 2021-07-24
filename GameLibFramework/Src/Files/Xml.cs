@@ -29,13 +29,11 @@ namespace GameLib.Files
 
         public static void SerializeObject<T>(string destFileName, T i)
         {
-            XmlSerializer serializer =
-            new XmlSerializer(typeof(T));
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
             
             // Create an XmlTextWriter using a FileStream.
             Stream fs = new FileStream(destFileName, FileMode.Create);
-            XmlWriter writer =
-            new XmlTextWriter(fs, Encoding.Unicode);
+            XmlWriter writer = new XmlTextWriter(fs, Encoding.Unicode);
             // Serialize using the XmlTextWriter.
             serializer.Serialize(writer, i);
             writer.Close();
